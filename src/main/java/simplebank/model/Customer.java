@@ -15,8 +15,14 @@ public class Customer {
 
     public String address;
 
-    @OneToMany(mappedBy = "accountOwner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "accountOwner")
     public Collection<Account> accounts;
 
 
+    public Customer(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public Customer(){}
 }

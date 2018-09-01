@@ -1,0 +1,50 @@
+<dvi class="row">
+    <div class="col-md=12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Добавить счет</div>
+            <div class="panel-body">
+                <div>
+                    <form class="form-horizontal" name="account" ng-submit="submitForm()">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="sumId">Введите сумму счета:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" name="sum" id="sumId"
+                                       placeholder="0.00" ng-model="sum" required ng-pattern="/^\d{0,9}(\.\d{1,2})?$/"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-5">
+                                <button type="button" id="postButton" class="btn btn-default" ng-click="postfunction()">
+                                    Добавить
+                                    счет
+                                </button>
+                            </div>
+                            <label class="control-label col-sm-2" for="postButton">{{postResultMessage}}
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Счета клиена</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th width="50%">номер счета</th>
+                        <th width="50%">сумма</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in accounts">
+                        <td>{{item.id}}</td>
+                        <td>{{item.sum}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</dvi>
