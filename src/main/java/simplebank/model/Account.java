@@ -10,6 +10,20 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Account {
 
+
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @JsonIgnore
+    @ManyToOne
+    private Customer accountOwner;
+
+
+    private Double sum;
+
+
     public Account(){ }
 
     public Account(Customer accountOwner, Double sum){
@@ -40,16 +54,5 @@ public class Account {
     public void setSum(Double sum) {
         this.sum = sum;
     }
-
-    @Id
-    @GeneratedValue
-    public Long id;
-
-    @JsonIgnore
-    @ManyToOne
-    public Customer accountOwner;
-
-
-    public Double sum;
 
 }

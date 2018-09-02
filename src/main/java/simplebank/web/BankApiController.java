@@ -61,7 +61,7 @@ public class BankApiController {
 
                 .fromCurrentRequest().path("postaccount/{customerId}")
 
-                .buildAndExpand(result.id).toUri());
+                .buildAndExpand(result.getId()).toUri());
 
 
         return new ResponseEntity<>(result, httpHeaders, HttpStatus.CREATED);

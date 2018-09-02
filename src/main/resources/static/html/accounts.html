@@ -33,14 +33,17 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th width="50%">номер счета</th>
+                        <th width="40%">номер счета</th>
                         <th width="50%">сумма</th>
+                        <th width="10%"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr ng-repeat="item in accounts">
                         <td>{{item.id}}</td>
                         <td>{{item.sum}}</td>
+                        <td><a href="#/transfer/{{item.id}}/{{model.customerID}}" class="btn">&nbsp;<i
+                                class="glyphicon glyphicon-share"></i>&nbsp; Перевод между счетами</a></td>
                     </tr>
                     </tbody>
                 </table>

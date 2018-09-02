@@ -47,7 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Account saveAccount(Long customerId, Account account) {
         return customerRepository.findById(customerId).map(customer -> {
-            Account createdAccount = accountRepository.save(new Account(customer, account.sum));
+            Account createdAccount = accountRepository.save(new Account(customer, account.getSum()));
             return createdAccount;
         }).get();
     }

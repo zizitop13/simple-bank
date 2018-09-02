@@ -1,0 +1,95 @@
+<header>
+    <h3>{{title}}</h3>
+</header>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Текущий счет:
+    </div>
+
+    <div class="panel-body">
+        <form class="form-horizontal" name="transfer" ng-submit="submitForm()">
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sumId">Введите сумму перевода:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="sum" id="sumId"
+                           placeholder="0.00" ng-model="sum" required ng-pattern="/^\d{0,9}(\.\d{1,2})?$/"/>
+                </div>
+                <button type="button" id="transferButton" class="btn btn-default" ng-click="transferFunction()">
+                    Перевести
+                </button>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cbId">Выбрать счет другого клиента:</label>
+                <div class="col-sm-5">
+                    <input type="checkbox" id="cbId" ng-model="cb.chkselct" ng-click="checked(cb.chkselct)">
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+<div class="panel panel-default" ng-show='cb.chkselct'>
+    <div class="panel-heading">Выбрать клиента
+
+        <div class="form-group has-feedback">
+            <input ng-model="searchCustomer.name" type="text" class="form-control" name="search" id="search"
+                   placeholder="Поиск клиента по имени">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+
+    </div>
+    <div class="panel-body">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th width="40%">имя</th>
+                <th width="50%">адрес</th>
+                <th width="10%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in customers | limitTo : '5' | filter: searchCustomer"
+                ng-click="rowCustomerHighilited(item.id)"
+                ng-class="{selected: item.id === selectedCustomerRow}" ng-if="item.id != model.customerID">
+                <td>{{item.name}}</td>
+                <td>{{item.address}}</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Счета клиена</div>
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th width="40%">номер счета</th>
+                <th width="50%">сумма</th>
+                <th width="10%"></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="item in accounts" ng-click="rowAccountHighilited(item.id)" ng-if="item.id != model.accountID"
+                ng-class="{selected: item.id === selectedAccountRow}">
+                <td>{{item.id}}</td>
+                <td>{{item.sum}}</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
