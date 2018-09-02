@@ -12,22 +12,28 @@ app.config(['$routeProvider',
     function ($routeProvider) {
 
         $routeProvider.when('/', {
+            templateUrl: '/html/home.html',
+
+        }).when('/customer/', {
             templateUrl: '/html/customer.html',
             controller: 'СustomerController'
 
         }).when('/edit-accounts/:customerID', {
-            title: 'Edit Accounts',
             templateUrl: '/html/accounts.html',
             controller: 'AccountController'
 
         }).when('/transfer/:id/:customerID', {
-            title: 'Edit Accounts',
             templateUrl: '/html/transfer.html',
             controller: 'TransferController'
 
 
+        }).when('/transactions/', {
+            templateUrl: '/html/transactions.html',
+            controller: 'TransactionController'
+
+
         }).otherwise({
-            redirectTo: '/'
+            templateUrl: '/html/error.html'
         });
     }
 ]);

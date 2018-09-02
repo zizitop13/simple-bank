@@ -1,0 +1,25 @@
+<dvi class="row">
+    <div class="col-md=12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Тразакции</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th width="10%">Дата</th>
+                        <th width="40%">Клиент</th>
+                        <th width="50%">Описание</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in transactions">
+                        <td>{{item.date | date : 'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.discription}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</dvi>

@@ -11,6 +11,26 @@
 </head>
 <body ng-app="SimpleBank">
 
+<nav class="navbar navbar-default" ng-controller="HeaderController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <b class="navbar-brand" >Simple-bank demo</b>
+        </div>
+        <ul class="nav navbar-nav" bs-active-link>
+
+            <li ng-class="{ active: isActive('/') }">
+                <a href="#">Домашняя страница</a>
+            </li>
+            <li ng-class="{ active: isActive('/customer/') }">
+                <a href="#/customer/">Клиенты банка</a>
+            </li>
+            <li ng-class="{ active: isActive('/transactions/') }">
+                <a href="#/transactions/">Транзакции</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
 
 <div class="container" style="margin-top: 30px">
 
@@ -23,11 +43,13 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular-route.min.js"></script>
 
 
+
 <script type="text/javascript" src="/js/app.js"></script>
 
 <script type="text/javascript" src="/js/services.js"></script>
 
 <script type="text/javascript" src="/js/controllers.js"></script>
+
 
 </body>
 </html>

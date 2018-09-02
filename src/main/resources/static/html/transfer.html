@@ -1,11 +1,6 @@
-<header>
-    <h3>{{title}}</h3>
-</header>
-
-
 <div class="panel panel-default">
     <div class="panel-heading">
-        Текущий счет:
+        Текущий счет: номер счета: {{model.currentAccount.id}}, сумма на счёте: {{model.currentAccount.sum}}. Владелец счета: {{model.currentCustomer.name}}
     </div>
 
     <div class="panel-body">
@@ -16,11 +11,13 @@
                 <label class="control-label col-sm-2" for="sumId">Введите сумму перевода:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="sum" id="sumId"
-                           placeholder="0.00" ng-model="sum" required ng-pattern="/^\d{0,9}(\.\d{1,2})?$/"/>
+                           placeholder="0.00" ng-model="transfered.sum" required ng-pattern="/^\d{0,9}(\.\d{1,2})?$/"/>
                 </div>
                 <button type="button" id="transferButton" class="btn btn-default" ng-click="transferFunction()">
                     Перевести
                 </button>
+                <label class="control-label col-sm-2" for="transferButton">{{postResultMessage}}
+                </label>
             </div>
 
 
@@ -83,8 +80,8 @@
             </thead>
             <tbody>
 
-            <tr ng-repeat="item in accounts" ng-click="rowAccountHighilited(item.id)" ng-if="item.id != model.accountID"
-                ng-class="{selected: item.id === selectedAccountRow}">
+            <tr ng-repeat="item in accounts" ng-click="rowAccountHighilited(item)" ng-if="item.id != model.accountID"
+                ng-class="{selected: item === selectedAccountRow}">
                 <td>{{item.id}}</td>
                 <td>{{item.sum}}</td>
                 <td></td>
