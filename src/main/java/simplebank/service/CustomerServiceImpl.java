@@ -94,15 +94,19 @@ public class CustomerServiceImpl implements CustomerService {
 
         BankTransaction bankTransaction = new BankTransaction(Arrays.asList(sender, recipient), sum);
 
-        bankTransaction.setSumAfterRecipient(sumAfterRecipient);
+        bankTransaction.setSenderId(sender.getId());
 
-        bankTransaction.setSumBeforeRecipient(sumBeforeRecipient);
+        bankTransaction.setSumAfterRecipient(sumAfterRecipient);
 
         bankTransaction.setDate(new Date(System.currentTimeMillis()));
 
         bankTransaction.setSumAfterSender(sumAfterSender);
 
-        bankTransaction.setSumBeforeSender(sumBeforeSender);
+        String discription = "Перевод денежных средств со счета: " + sender.getId()+
+                " на счет " + recipient.getId() + ". ";
+
+        bankTransaction.setDiscription(discription);
+
 
 
         sender.getTransaction().add(bankTransaction);

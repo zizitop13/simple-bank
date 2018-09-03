@@ -2,6 +2,57 @@
     <div class="col-md=12">
         <div class="panel panel-default">
             <div class="panel-heading">Тразакции</div>
+
+            <div class="header-panel">
+                <div>
+                    <table>
+                        <tr>
+                            <td width="40%">
+                                <div class="form-group has-feedback">
+                                    <input ng-model="searchTransaction.name" type="text" class="form-control"
+                                           name="searchName"
+                                           id="searchName"
+                                           placeholder="Поиск клиента по имени">
+                                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                </div>
+                            </td>
+
+
+                            <td width="10%"></td>
+                            <td width="30%">
+                                <h5>Дата начала периода</h5>
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup ng-model="dtfrom"
+                                           is-open="popup1.opened"
+                                           ng-change="filterFunction()"
+                                           datepicker-options="dateOptions" ng-required="true"
+                                           close-text="Close"/>
+                                    <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open1()"><i
+                                                    class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                </p>
+                            </td>
+                            <td width="30%">
+                                <h5>Дата конца периода</h5>
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup ng-model="dtto"
+                                           is-open="popup2.opened"
+                                           datepicker-options="dateOptions" ng-required="true"
+                                           ng-change="filterFunction()"
+                                           close-text="Close"/>
+                                    <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="open2()"><i
+                                                    class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                </div>
+            </div>
             <div class="panel-body">
                 <table class="table table-striped">
                     <thead>
@@ -12,8 +63,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in transactions">
-                        <td>{{item.date | date : 'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                    <tr ng-repeat="item in transactions  | limitTo : '50' | orderBy : '-date' | filter: searchTransaction">
+                        <td>{{item.date | date : 'yyyy-MM-dd HH:mm:ss sss Z' }}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.discription}}</td>
                     </tr>

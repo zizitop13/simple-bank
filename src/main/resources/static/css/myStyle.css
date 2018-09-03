@@ -4,6 +4,12 @@
     background-color: #72c3a2 !important;
 }
 
+/* цвет фона строки в таблице при наведении курсором */
+.selecteble:hover {
+    background-color: #d4eed4 !important;
+}
+
+/* цвет фона для шапки панелий*/
 .panel > .panel-heading {
     background-image: none;
     background-color: #008c99;
@@ -92,3 +98,7 @@
         background-color: #27ae60;
     }
 }
+
+
+/* для ul-bootstrap-tpls*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

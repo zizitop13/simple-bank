@@ -55,12 +55,21 @@ public class BankApiController {
         return customerService.getCustomerAccounts(customerId);
     }
 
-    @PostMapping("postcustomer")
-    public String createCustomer(@RequestBody Customer customer){
+    @PostMapping("/postcustomer")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer){
 
-        customerService.saveCustomer(customer);
+        Customer result = customerService.saveCustomer(customer);
 
-        return "Sucessful";
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        httpHeaders.setLocation(ServletUriComponentsBuilder
+
+                .fromCurrentRequest().path("postcustomer")
+
+                .buildAndExpand(result.getId()).toUri());
+
+
+        return new ResponseEntity<Customer>(result, httpHeaders, HttpStatus.CREATED);
     }
 
 

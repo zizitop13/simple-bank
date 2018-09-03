@@ -1,6 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        Текущий счет: номер счета: {{model.currentAccount.id}}, сумма на счёте: {{model.currentAccount.sum}}. Владелец счета: {{model.currentCustomer.name}}
+        Текущий счет: номер счета: {{model.currentAccount.id}}, сумма на счёте: {{model.currentAccount.sum}}. Владелец
+        счета: {{model.currentCustomer.name}}
     </div>
 
     <div class="panel-body">
@@ -35,14 +36,13 @@
 
 
 <div class="panel panel-default" ng-show='cb.chkselct'>
-    <div class="panel-heading">Выбрать клиента
-
+    <div class="panel-heading">Выбрать клиента</div>
+    <div class="header-panel">
         <div class="form-group has-feedback">
             <input ng-model="searchCustomer.name" type="text" class="form-control" name="search" id="search"
                    placeholder="Поиск клиента по имени">
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
-
     </div>
     <div class="panel-body">
 
@@ -57,6 +57,7 @@
             <tbody>
             <tr ng-repeat="item in customers | limitTo : '5' | filter: searchCustomer"
                 ng-click="rowCustomerHighilited(item.id)"
+                class="selecteble"
                 ng-class="{selected: item.id === selectedCustomerRow}" ng-if="item.id != model.customerID">
                 <td>{{item.name}}</td>
                 <td>{{item.address}}</td>
@@ -81,7 +82,7 @@
             <tbody>
 
             <tr ng-repeat="item in accounts" ng-click="rowAccountHighilited(item)" ng-if="item.id != model.accountID"
-                ng-class="{selected: item === selectedAccountRow}">
+                ng-class="{selected: item === selectedAccountRow}" class="selecteble">
                 <td>{{item.id}}</td>
                 <td>{{item.sum}}</td>
                 <td></td>

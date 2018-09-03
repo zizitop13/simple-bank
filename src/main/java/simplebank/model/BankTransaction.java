@@ -15,6 +15,7 @@ public class BankTransaction {
     @GeneratedValue
     private Long transactionId;
 
+
     private Date date;
 
     @JsonIgnoreProperties("transaction")
@@ -23,11 +24,15 @@ public class BankTransaction {
 
     private Double transferdSum;
 
-    private Double sumBeforeSender;
-
     private Double sumAfterSender;
 
-    private Double sumBeforeRecipient;
+    private Double sumAfterRecipient;
+
+    private String discription;
+
+    private Long senderId;
+
+    public BankTransaction(){}
 
     public BankTransaction(Collection<Account> accounts, Double transferdSum) {
 
@@ -36,13 +41,6 @@ public class BankTransaction {
         this.transferdSum = transferdSum;
     }
 
-    public Double getSumBeforeSender() {
-        return sumBeforeSender;
-    }
-
-    public void setSumBeforeSender(Double sumBeforeSender) {
-        this.sumBeforeSender = sumBeforeSender;
-    }
 
     public Double getSumAfterSender() {
         return sumAfterSender;
@@ -52,13 +50,6 @@ public class BankTransaction {
         this.sumAfterSender = sumAfterSender;
     }
 
-    public Double getSumBeforeRecipient() {
-        return sumBeforeRecipient;
-    }
-
-    public void setSumBeforeRecipient(Double sumBeforeRecipient) {
-        this.sumBeforeRecipient = sumBeforeRecipient;
-    }
 
     public Double getSumAfterRecipient() {
         return sumAfterRecipient;
@@ -68,11 +59,6 @@ public class BankTransaction {
         this.sumAfterRecipient = sumAfterRecipient;
     }
 
-    private Double sumAfterRecipient;
-
-
-
-    public BankTransaction(){}
 
     public Long getTransactionId() {
         return transactionId;
@@ -106,6 +92,21 @@ public class BankTransaction {
         this.transferdSum = transferdSum;
     }
 
+    public String getDiscription() {
+        return discription;
+    }
+
+    public void setDiscription(String discription) {
+        this.discription = discription;
+    }
+
+    public Long getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(Long senderId) {
+        this.senderId = senderId;
+    }
 
 
 

@@ -5,7 +5,7 @@
 
     <groupId>tbm</groupId>
     <artifactId>simple-bank</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-RELEASE</version>
     <packaging>jar</packaging>
 
     <name>simple-bank</name>
